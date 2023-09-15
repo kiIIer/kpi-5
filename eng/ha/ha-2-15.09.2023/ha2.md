@@ -1,5 +1,11 @@
 # HA 2
 
+- [HA 2](#ha-2)
+  - [Assignment](#assignment)
+  - [Solution](#solution)
+    - [Ex. 6](#ex-6)
+    - [Ex. 7](#ex-7)
+
 ## Assignment
 
 Textbook: Oxford English for Information Technology (attached)
