@@ -41,45 +41,44 @@
 ## Виконання
 
 ### Трикутна та трапецієподібна функції
-
 ![triangle](plots/triangle.png)
 ![trapezoid](plots/trapezoid.png)
 
 ### Фукнції Гаусса
 
-![gaussian](plots/gaussian.png)
+![gaussian](plots/gaussian.jpg)
 
 ### Дзвін
 
-![bell](plots/bell.png)
+![bell](plots/bell.jpg)
 
 ### Сигмоїдальні
 
-![sigma1](plots/sigma1.png)
+![sigma1](plots/sigma1.jpg)
 
-![doublesigma](plots/doublesigma.png)
+![doublesigma](plots/doublesigma.jpg)
 
-![additionalsigma](plots/additionalsigma.png)
+![additionalsigma](plots/additionalsigma.jpg)
 
 ### Поліноміальні
 
-![zf](plots/zf.png)
+![zf](plots/zf.jpg)
 
-![pi](plots/pi.png)
+![pi](plots/pi.jpg)
 
-![s](plots/s.png)
+![s](plots/s.jpg)
 
 ### Логічні оператори
 
-![minimax](plots/minimax.png)
+![minimax](plots/minimax.jpg)
 
 ### Множинні
 
-![set](plots/set.png)
+![set](plots/set.jpg)
 
 ### Доповнення
 
-![addition](plots/addition.png)
+![addition](plots/addition.jpg)
 
 ## Висновок
 
