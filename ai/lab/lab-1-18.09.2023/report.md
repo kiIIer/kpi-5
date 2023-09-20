@@ -41,6 +41,7 @@
 ## Виконання
 
 ### Трикутна та трапецієподібна функції
+
 ![triangle](plots/triangle.png)
 ![trapezoid](plots/trapezoid.png)
 
