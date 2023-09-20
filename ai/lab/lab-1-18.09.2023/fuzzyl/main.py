@@ -158,23 +158,13 @@ plt.ylabel('Ступінь приналежності')
 plt.grid(True)
 plt.show()
 
-
 # Поліноміальні
-
-def z_function(x, a, b):
-    if x <= a:
-        return 1
-    elif a <= x <= b:
-        return (x - b) / (a - b)
-    else:
-        return 0
-
 
 a = 2
 b = 4
 
 x = np.linspace(0, 6, 100)
-y = [z_function(i, a, b) for i in x]
+y = fuzz.zmf(x, a, b)
 
 plt.plot(x, y)
 plt.title('Z-функція')
@@ -183,25 +173,13 @@ plt.ylabel('Ступінь приналежності')
 plt.grid(True)
 plt.show()
 
-
-def pi_function(x, a, b, c, d):
-    if x <= a or x >= d:
-        return 0
-    elif a <= x <= b:
-        return (x - a) / (b - a)
-    elif b <= x <= c:
-        return 1
-    elif c <= x <= d:
-        return (d - x) / (d - c)
-
-
 a = 1
 b = 3
 c = 4
 d = 6
 
 x = np.linspace(0, 8, 100)
-y = [pi_function(i, a, b, c, d) for i in x]
+y = fuzz.pimf(x, a, b, c, d)
 
 plt.plot(x, y)
 plt.title('PI-функція')
@@ -210,16 +188,11 @@ plt.ylabel('Ступінь приналежності')
 plt.grid(True)
 plt.show()
 
-
-def s_function(x, a, b):
-    return 1 - z_function(x, a, b)
-
-
 a = 2
 b = 4
 
 x = np.linspace(0, 6, 100)
-y = [s_function(i, a, b) for i in x]
+y = fuzz.smf(x, a, b)
 
 plt.plot(x, y)
 plt.title('S-функція')
@@ -268,10 +241,12 @@ plt.legend()
 plt.tight_layout()
 plt.show()
 
+
 # Кон'юнкція / Диз'юнкція
 
 def gaussian_probability(x, mean, std_dev):
     return np.exp(-((x - mean) / (std_dev)) ** 2 / 2) / (std_dev * np.sqrt(2 * np.pi))
+
 
 mean_A = 0.5
 std_dev_A = 0.2
