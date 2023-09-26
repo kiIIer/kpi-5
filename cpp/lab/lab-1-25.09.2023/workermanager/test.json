@@ -1,1 +1,20 @@
-null
+[
+    {
+        "address": "Poland",
+        "age": 19,
+        "code": 1,
+        "fullName": "Mike",
+        "gender": "male",
+        "jobCode": 1,
+        "passportData": "a123"
+    },
+    {
+        "address": "Ukraine",
+        "age": 20,
+        "code": 2,
+        "fullName": "Nikita",
+        "gender": "male",
+        "jobCode": 1,
+        "passportData": "b123"
+    }
+]

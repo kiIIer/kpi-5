@@ -2,7 +2,7 @@
 #define WORKERMANAGER_EMPLOYEE_H
 
 #include <string>
-#include <nlohmann/json.hpp>
+#include "json/include/nlohmann/json.hpp"
 
 class Employee {
 public:

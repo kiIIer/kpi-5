@@ -6,9 +6,9 @@
 #define WORKERMANAGER_COMMANDS_H
 
 
-#include "IGetCommand.h"
-#include "IAddCommand.h"
-#include "IDeleteCommand.h"
+#include "Get/IGetCommand.h"
+#include "Add/IAddCommand.h"
+#include "Delete/IDeleteCommand.h"
 
 class Commands {
 public:

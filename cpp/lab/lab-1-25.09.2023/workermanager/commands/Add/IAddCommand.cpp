@@ -1,5 +1,5 @@
 #include "IAddCommand.h"
-#include "IJsonParser.h"
+#include "../../tools/IJsonParser.h"
 #include "AddCommand.h"
 
 fruit::Component<IAddCommand> getIAddCommandComponent() {

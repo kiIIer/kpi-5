@@ -3,7 +3,7 @@
 //
 
 #include "IDeleteCommand.h"
-#include "IJsonParser.h"
+#include "../../tools/IJsonParser.h"
 #include "DeleteCommand.h"
 
 fruit::Component<IDeleteCommand> getIDeleteCommandComponent() {

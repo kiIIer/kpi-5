@@ -7,7 +7,7 @@
 
 
 #include "IAddCommand.h"
-#include "IJsonParser.h"
+#include "../../tools/IJsonParser.h"
 
 class AddCommand : public IAddCommand {
 private:

@@ -8,7 +8,7 @@
 
 #include "IGetCommand.h"
 #include "fruit/macro.h"
-#include "IJsonParser.h"
+#include "../../tools/IJsonParser.h"
 
 class GetCommand : public IGetCommand {
 private:

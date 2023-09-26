@@ -1,9 +1,9 @@
 #include <iostream>
 #include "fruit/fruit.h"
-#include "IJsonParser.h"
+#include "tools/IJsonParser.h"
 #include "dep/CLI11.hpp"
-#include "IGetCommand.h"
-#include "Commands.h"
+#include "commands/Get/IGetCommand.h"
+#include "commands/Commands.h"
 
 int main(int argc, char *argv[]) {
     CLI::App app("Employee Management CLI");
@@ -87,4 +87,3 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-

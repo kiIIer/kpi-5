@@ -6,9 +6,9 @@
 #define WORKERMANAGER_IGETCOMMAND_H
 
 
-#include "Employee.h"
+#include "../../entities/Employee.h"
 #include "fruit/component.h"
-#include "IJsonParser.h"
+#include "../../tools/IJsonParser.h"
 
 class IGetCommand {
 public:

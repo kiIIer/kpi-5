@@ -7,7 +7,7 @@
 
 
 #include "IDeleteCommand.h"
-#include "IJsonParser.h"
+#include "../../tools/IJsonParser.h"
 
 class DeleteCommand : public IDeleteCommand {
 private:

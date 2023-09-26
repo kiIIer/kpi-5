@@ -6,7 +6,7 @@
 #define WORKERMANAGER_IJSONPARSER_H
 
 
-#include "Employee.h"
+#include "../entities/Employee.h"
 #include "fruit/macro.h"
 
 class IJsonParser {

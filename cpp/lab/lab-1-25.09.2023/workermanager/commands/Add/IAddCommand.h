@@ -6,7 +6,7 @@
 #define WORKERMANAGER_IADDCOMMAND_H
 
 
-#include "Employee.h"
+#include "../../entities/Employee.h"
 #include "fruit/fruit.h"
 
 class IAddCommand {

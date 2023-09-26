@@ -6,7 +6,7 @@
 #define WORKERMANAGER_IDELETECOMMAND_H
 
 
-#include "Employee.h"
+#include "../../entities/Employee.h"
 #include "fruit/fruit.h"
 
 class IDeleteCommand {
