@@ -13,17 +13,17 @@ void loop()
     {
     case 'C':
         digitalWrite(LED_BUILTIN, HIGH);
-        delay(500);
+        delay(1050);
         digitalWrite(LED_BUILTIN, LOW);
-        delay(500);
-        Serial.println("Hello C world");
+        delay(1050);
+        Serial.println("Hello C Milan");
         break;
 
     case 'M':
         digitalWrite(LED_BUILTIN, HIGH);
-        delay(500);
+        delay(1050);
         digitalWrite(LED_BUILTIN, LOW);
-        delay(500);
+        delay(1050);
         Serial.println("This was made by Mike");
         break;
     }
