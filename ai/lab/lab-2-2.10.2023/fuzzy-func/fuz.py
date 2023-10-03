@@ -38,9 +38,10 @@ def add_lambdas(min_v, max_v, n):
     lambdas = []
     for i in range(n):
         current_mean = means(min_v, max_v, n, i)
-        lam = lambda val, current_mean=current_mean: fuzz.membership.gaussmf(val, current_mean, (max_v - min_v) / n / 2)
+        # lam = lambda val, current_mean=current_mean: fuzz.membership.gaussmf(val, current_mean, (max_v - min_v) / n / 2)
         # lam = lambda val, current_mean=current_mean: fuzz.membership.gbellmf(val, (max_v - min_v) / n / 2, 5,
         #                                                                      current_mean)
+        lam = lambda val, current_mean=current_mean: fuzz.membership.gaussmf(val, current_mean, (max_v - min_v) / n / 6)
 
         lambdas.append(lam)
 
@@ -59,7 +60,7 @@ plt.show()
 
 def choose_lam(value, lams):
     best_index = None
-    best_score = float(-1)
+    best_score = float(0)
 
     for index, lam in enumerate(lams):
         score = lam(value)
