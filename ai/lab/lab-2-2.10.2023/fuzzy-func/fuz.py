@@ -65,3 +65,8 @@ def choose_lam(value, lams):
             best_index = index
 
     return best_index
+
+
+def to_fuzzy(values, lams):
+    fuzzy_indexes = [choose_lam(value, lams) for value in values]
+    return np.array(fuzzy_indexes)
