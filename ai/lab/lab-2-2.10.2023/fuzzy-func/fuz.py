@@ -12,7 +12,7 @@ def real_z(x, y):
     return 0.5 * np.sin(x + y) * np.cos(y)
 
 
-dots_n = 1000
+dots_n = 100
 
 min_x = 0
 max_x = 40
@@ -23,7 +23,7 @@ max_y = 2.5
 min_z = -1
 max_z = 1
 
-lams = 20
+lams = 16
 
 x_values = np.linspace(min_x, max_x, dots_n)
 y_values = real_y(x_values)
@@ -39,6 +39,9 @@ def add_lambdas(min_v, max_v, n):
     for i in range(n):
         current_mean = means(min_v, max_v, n, i)
         lam = lambda val, current_mean=current_mean: fuzz.membership.gaussmf(val, current_mean, (max_v - min_v) / n / 2)
+        # lam = lambda val, current_mean=current_mean: fuzz.membership.gbellmf(val, (max_v - min_v) / n / 2, 5,
+        #                                                                      current_mean)
+
         lambdas.append(lam)
 
     return lambdas
@@ -47,6 +50,11 @@ def add_lambdas(min_v, max_v, n):
 x_lams = add_lambdas(min_x, max_x, lams)
 y_lams = add_lambdas(min_y, max_y, lams)
 z_lams = add_lambdas(min_z, max_z, lams)
+
+for lam in x_lams:
+    plt.plot(x_values, lam(x_values))
+
+plt.show()
 
 
 def choose_lam(value, lams):
@@ -100,7 +108,17 @@ def z_x(x_arr):
     return z
 
 
-plt.plot(x_values, z_x(x_values))
+my_zed = z_x(x_values)
+plt.plot(x_values, my_zed)
 plt.plot(x_values, y_values)
 plt.plot(x_values, z_values)
 plt.show()
+
+mse = mean_squared_error(z_values, my_zed)
+mae = mean_absolute_error(z_values, my_zed)
+r2 = r2_score(z_values, my_zed)
+
+# Print the error metrics
+print(f"Mean Squared Error (MSE): {mse}")
+print(f"Mean Absolute Error (MAE): {mae}")
+print(f"R-squared (R2) Score: {r2}")
