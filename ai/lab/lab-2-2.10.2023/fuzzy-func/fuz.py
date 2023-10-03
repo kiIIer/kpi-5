@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import skfuzzy as fuzz
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
 
 def real_y(x):
@@ -11,27 +12,22 @@ def real_z(x, y):
     return 0.5 * np.sin(x + y) * np.cos(y)
 
 
-dots_n = 100
+dots_n = 1000
 
 min_x = 0
 max_x = 40
 
-min_y = -2
-max_y = 2
+min_y = -2.5
+max_y = 2.5
 
-min_z = -0.5
-max_z = 0.5
+min_z = -1
+max_z = 1
 
-lams = 10
+lams = 20
 
 x_values = np.linspace(min_x, max_x, dots_n)
 y_values = real_y(x_values)
 z_values = real_z(x_values, y_values)
-
-
-# plt.plot(x_values, y_values)
-# plt.plot(x_values, z_values)
-# plt.show()
 
 
 def means(min_v, max_v, n, i):
@@ -70,3 +66,41 @@ def choose_lam(value, lams):
 def to_fuzzy(values, lams):
     fuzzy_indexes = [choose_lam(value, lams) for value in values]
     return np.array(fuzzy_indexes)
+
+
+def from_fuzz(value, min_v, max_v, n):
+    return min_v + (max_v - min_v) / n * value
+
+
+rules = {}
+
+for i in range(lams):
+    for j in range(lams):
+        current_x = from_fuzz(i, min_x, max_x, lams)
+        current_y = from_fuzz(j, min_y, max_y, lams)
+        current_z = real_z(current_x, current_y)
+        fuzzy_z = choose_lam(current_z, z_lams)
+
+        rules[(i, j)] = fuzzy_z
+
+
+def fuzzy_z(x, y):
+    x_fuzz = choose_lam(x, x_lams)
+    y_fuzz = choose_lam(y, y_lams)
+
+    z_fuzz = rules[(x_fuzz, y_fuzz)]
+    return from_fuzz(z_fuzz, min_z, max_z, lams)
+
+
+def z_x(x_arr):
+    z = []
+    for x in x_arr:
+        y = real_y(x)
+        z.append(fuzzy_z(x, y))
+    return z
+
+
+plt.plot(x_values, z_x(x_values))
+plt.plot(x_values, y_values)
+plt.plot(x_values, z_values)
+plt.show()
