@@ -1,3 +1,5 @@
+import statistics
+
 import skfuzzy as fuzz
 import numpy as np
 import matplotlib.pyplot as plt
@@ -19,13 +21,15 @@ x = np.linspace(0, max_x, 1000)
 y = real_y(x)
 z = real_z(x, y)
 
-input_n = 40
-output_n = 80
+input_n = 12
+output_n = 16
 
 input_x_sets = []
 
 for i in range(input_n):
     gaus = lambda inp, i=i: fuzz.membership.gaussmf(inp, max_x / input_n * i, max_x / input_n / 2)
+
+    # gaus = lambda inp, i=i: fuzz.membership.gbellmf(inp, max_x / input_n / 2, 5, max_x / input_n * i)
     input_x_sets.append(gaus)
 
 min_y = -2
@@ -36,6 +40,9 @@ input_y_sets = []
 for i in range(input_n):
     gaus = lambda inp, i=i: fuzz.membership.gaussmf(inp, min_y + (max_y - min_y) / input_n * i,
                                                     (max_y - min_y) / input_n / 2)
+
+    # gaus = lambda inp, i=i: fuzz.membership.gbellmf(inp, (max_y - min_y) / input_n / 2, 5,
+    #                                                 min_y + (max_y - min_y) / input_n * i)
     input_y_sets.append(gaus)
 
 min_z = -0.7
@@ -46,6 +53,9 @@ output_sets = []
 for i in range(output_n):
     gaus = lambda inp, i=i: fuzz.membership.gaussmf(inp, min_z + (max_z - min_z) / output_n * i,
                                                     (max_z - min_z) / output_n / 2)
+
+    # gaus = lambda inp, i=i: fuzz.membership.gbellmf(inp, (max_z - min_z) / output_n / 2, 5,
+    #                                                 min_z + (max_z - min_z) / output_n * i)
     output_sets.append(gaus)
 
 
@@ -105,8 +115,10 @@ def set_n_z(variable):
 
 rules = []
 
+possible_y = np.linspace(min_y, max_y, 100)
+
 for x_val in x:
-    for y_val in y:
+    for y_val in possible_y:
         z_val = real_z(x_val, y_val)
 
         x_set = set_n_x(x_val)
@@ -142,8 +154,8 @@ def almost_zed(x, y):
         matching_rules = [(x_rule, y_rule, z_out) for (x_rule, y_rule, z_out) in rules if
                           x_rule == x_set[i] and y_rule == y_set[i]]
         z_values = [rule[2] for rule in matching_rules]
-        average_z = sum(z_values) / len(z_values)
-        z_set.append(int(average_z))
+        most_common_z = statistics.mode(z_values)
+        z_set.append(int(most_common_z))
 
     return set_to_real(z_set)
 
