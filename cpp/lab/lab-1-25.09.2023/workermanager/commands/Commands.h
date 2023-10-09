@@ -9,14 +9,17 @@
 #include "Get/IGetCommand.h"
 #include "Add/IAddCommand.h"
 #include "Delete/IDeleteCommand.h"
+#include "Move/IMoveCommand.h"
 
 class Commands {
 public:
     IGetCommand *getCommand;
     IAddCommand *addCommand;
     IDeleteCommand *deleteCommand;
+    IMoveCommand *moveCommand;
 
-    INJECT(Commands(IGetCommand * getCommand, IAddCommand * addCommand, IDeleteCommand * deleteCommand));
+    INJECT(Commands(IGetCommand * getCommand, IAddCommand * addCommand, IDeleteCommand * deleteCommand,
+                    IMoveCommand * moveCommand));
 };
 
 fruit::Component<Commands> getCommandsComponent();
