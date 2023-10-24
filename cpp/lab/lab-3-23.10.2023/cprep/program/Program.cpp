@@ -7,8 +7,8 @@
 #include "Program.h"
 
 Program::Program(IOptionParser *optionParser, IWorker *worker, IResultExporter *exporter, IQueueFactory *queueFactory)
-        : optionParser(optionParser), worker(worker), exporter(exporter), taskQueue(queueFactory->create_task()),
-          resultQueue(queueFactory->create_result()) {}
+        : optionParser(optionParser), worker(worker), exporter(exporter), taskQueue(queueFactory->createTask()),
+          resultQueue(queueFactory->createResult()) {}
 
 int Program::run(int argc, char **argv) {
     // Parse options

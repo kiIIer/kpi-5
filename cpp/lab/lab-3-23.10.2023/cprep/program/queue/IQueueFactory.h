@@ -9,13 +9,15 @@
 #include "IQueue.h"
 #include "../utils/Result.h"
 #include "../utils/Task.h"
+#include "fruit/component.h"
 
 class IQueueFactory {
 public:
-    virtual std::unique_ptr<IQueue<Task>> create_task() = 0;
+    virtual std::unique_ptr<IQueue<Task>> createTask() = 0;
 
-    virtual std::unique_ptr<IQueue<Result>> create_result() = 0;
+    virtual std::unique_ptr<IQueue<Result>> createResult() = 0;
 };
 
+fruit::Component<IQueueFactory> getIQueueFactoryComponent();
 
 #endif //CPREP_IQUEUEFACTORY_H

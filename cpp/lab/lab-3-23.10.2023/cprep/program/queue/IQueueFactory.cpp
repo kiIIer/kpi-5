@@ -3,3 +3,9 @@
 //
 
 #include "IQueueFactory.h"
+#include "QueueFactory.h"
+#include "fruit/fruit.h"
+
+fruit::Component<IQueueFactory> getIQueueFactoryComponent(){
+    return fruit::createComponent().bind<IQueueFactory, QueueFactory>();
+};
