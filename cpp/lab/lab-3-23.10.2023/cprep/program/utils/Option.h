@@ -2,13 +2,14 @@
 #include "thread"
 
 struct Options {
-    bool ignoreCase = false;
-    bool invertMatch = false;
-    std::string pattern;
-    std::string patternFile;
-    int afterContext = 0;
-    int beforeContext = 0;
-    int context = 0;
-    bool showLineNumber = false;
-    unsigned int threads = std::thread::hardware_concurrency(); // default to the number of CPU cores
+    bool ignoreCase = false;   // -i
+    bool invertMatch = false;  // -v
+    std::vector<std::string> patterns;  // -e (multiple allowed)
+    std::string patternFile;   // -f
+    int afterContext = 0;      // -A
+    int beforeContext = 0;     // -B
+    int context = 0;           // -C
+    bool showLineNumber = false;  // -n
+    int threads = 1;           // --threads
+    std::optional<std::string> inputFile;  // If provided, read from this file, else stdin
 };

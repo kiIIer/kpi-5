@@ -6,8 +6,13 @@
 #define CPREP_IRESULTEXPORTER_H
 
 
+#include <vector>
+#include "../utils/Result.h"
+
 class IResultExporter {
 
+public:
+    virtual void exportResults(std::__1::vector<Result> results) = 0;
 };
 
 

@@ -7,11 +7,14 @@
 
 #include <memory>
 #include "IQueue.h"
+#include "../utils/Result.h"
+#include "../utils/Task.h"
 
-template<typename T>
 class IQueueFactory {
 public:
-    virtual std::unique_ptr<IQueue<T>> create() = 0;
+    virtual std::unique_ptr<IQueue<Task>> create_task() = 0;
+
+    virtual std::unique_ptr<IQueue<Result>> create_result() = 0;
 };
 
 

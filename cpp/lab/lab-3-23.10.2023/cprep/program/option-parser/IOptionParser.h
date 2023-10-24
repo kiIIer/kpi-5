@@ -6,8 +6,12 @@
 #define CPREP_IOPTIONPARSER_H
 
 
+#include "../utils/Option.h"
+
 class IOptionParser {
 
+public:
+    virtual Options *parse(int i, char **args) = 0;
 };
 
 

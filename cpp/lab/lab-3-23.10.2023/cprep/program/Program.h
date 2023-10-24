@@ -17,13 +17,15 @@
 
 class Program {
 private:
-    IOptionParser* optionParser;
-    IWorker* worker;
-    IResultExporter* exporter;
+    IOptionParser *optionParser;
+    IWorker *worker;
+    IResultExporter *exporter;
     std::unique_ptr<IQueue<Task>> taskQueue;
     std::unique_ptr<IQueue<Result>> resultQueue;
 
-    void distributeTasks(Options* userOptions);
+    void readPatternsFromFile(Options *opts);
+
+    void distributeTasks(Options *userOptions);
 
     std::vector<Result> gatherResultsFromAllWorkers();
 
@@ -31,7 +33,7 @@ public:
     INJECT(Program(IOptionParser * optionParser, IWorker * worker, IResultExporter * exporter,
                    IQueueFactory * queueFactory));
 
-    int run(int argc, char* argv[]);
+    int run(int argc, char *argv[]);
 };
 
 
