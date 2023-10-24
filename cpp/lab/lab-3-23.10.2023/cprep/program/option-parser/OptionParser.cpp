@@ -19,13 +19,6 @@ std::unique_ptr<Options> OptionParser::parse(CLI::App &app) {
     // File to search
     app.add_option("-f,--file", options->inputFile, "File to search.");
 
-    // Context options
-    app.add_option("-A,--after-context", options->afterContext,
-                   "Print N lines of trailing context after matching lines.");
-    app.add_option("-B,--before-context", options->beforeContext,
-                   "Print N lines of leading context before matching lines.");
-    app.add_option("-C,--context", options->context, "Print N lines of leading and trailing context combined.");
-
     // Line number
     app.add_flag("-n,--line-number", options->showLineNumber, "Print line number with output.");
 

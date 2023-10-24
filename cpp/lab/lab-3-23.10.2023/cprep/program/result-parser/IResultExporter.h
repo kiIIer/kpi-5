@@ -8,12 +8,16 @@
 
 #include <vector>
 #include "../utils/Result.h"
+#include "../utils/Options.h"
+#include "fruit/fruit.h"
 
 class IResultExporter {
 
 public:
-    virtual void exportResults(std::__1::vector<Result> results) = 0;
+    virtual void exportResults(std::vector<Result> results, Options *options) = 0;
 };
+
+fruit::Component<IResultExporter> getIResultExporterComponent();
 
 
 #endif //CPREP_IRESULTEXPORTER_H

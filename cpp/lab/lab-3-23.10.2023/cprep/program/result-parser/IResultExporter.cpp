@@ -3,3 +3,8 @@
 //
 
 #include "IResultExporter.h"
+#include "ResultExporter.h"
+
+fruit::Component<IResultExporter> getIResultExporterComponent(){
+    return fruit::createComponent().bind<IResultExporter, ResultExporter>();
+};

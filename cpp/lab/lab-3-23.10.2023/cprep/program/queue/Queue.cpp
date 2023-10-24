@@ -17,21 +17,11 @@ void Queue<T>::push(const T &item) {
 template<typename T>
 bool Queue<T>::pop(T &item) {
     std::unique_lock<std::mutex> lock(mtx);
-    while (data.empty()) {
-        cv.wait(lock);
-    }
+    cv.wait(lock, [this]() { return !data.empty() || terminate; });
 
-    // If the line number indicates worker termination, break out without waiting
-    if constexpr (std::is_same_v<T, Task>) {
-        if (data.front().lineNumber == -1) {
-            item = data.front();
-            data.pop();
-            return true;
-        }
-    }
-
-    if (data.empty())
+    if (terminate && data.empty()) {
         return false;
+    }
 
     item = data.front();
     data.pop();
@@ -39,7 +29,8 @@ bool Queue<T>::pop(T &item) {
 }
 
 template<typename T>
-bool Queue<T>::isEmpty() const {
-    std::lock_guard<std::mutex> lock(mtx);
-    return data.empty();
+void Queue<T>::shouldTerminate() {
+    std::unique_lock<std::mutex> lock(mtx);
+    terminate = true;
+    cv.notify_all();
 }

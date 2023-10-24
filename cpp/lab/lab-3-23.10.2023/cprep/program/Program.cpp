@@ -18,8 +18,8 @@ int Program::run(int argc, char **argv) {
     // Start worker threads
     std::vector<std::thread> workerThreads;
     for (int i = 0; i < userOptions->threads; ++i) {
-        workerThreads.emplace_back([this]() {
-            worker->work(taskQueue.get(), resultQueue.get());
+        workerThreads.emplace_back([this, &userOptions]() {
+            worker->work(taskQueue.get(), resultQueue.get(), userOptions.get());
         });
     }
 

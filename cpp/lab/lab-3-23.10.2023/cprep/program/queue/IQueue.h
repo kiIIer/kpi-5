@@ -16,7 +16,7 @@ public:
     virtual bool pop(T& item) = 0;
 
     // Check if the queue is empty
-    virtual bool isEmpty() const = 0;
+    virtual void shouldTerminate() const = 0;
 };
 
 

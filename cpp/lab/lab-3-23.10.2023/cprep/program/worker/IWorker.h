@@ -9,12 +9,15 @@
 #include "../queue/IQueue.h"
 #include "../utils/Task.h"
 #include "../utils/Result.h"
+#include "fruit/component.h"
 
 class IWorker {
 
 public:
-    virtual void work(IQueue<Task> *taskQueue, IQueue<Result> *resultQueue) = 0;
+    virtual void work(IQueue<Task> *taskQueue, IQueue<Result> *resultQueue, Options *options) = 0;
 };
+
+fruit::Component<IWorker> getIWorkerComponent();
 
 
 #endif //CPREP_IWORKER_H

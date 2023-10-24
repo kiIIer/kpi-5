@@ -18,12 +18,14 @@ public:
 
     bool pop(T &item) override;
 
-    bool isEmpty() const override;
+    void shouldTerminate() override;
 
 private:
     mutable std::mutex mtx;
     std::condition_variable cv;
-    std::queue <T> data;
+    std::queue<T> data;
+    bool terminate = false;
+};
 };
 
 

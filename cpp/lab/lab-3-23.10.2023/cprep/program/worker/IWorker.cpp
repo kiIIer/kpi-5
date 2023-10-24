@@ -3,3 +3,9 @@
 //
 
 #include "IWorker.h"
+#include "Worker.h"
+#include "fruit/fruit.h"
+
+fruit::Component<IWorker> getIWorkerComponent(){
+    return fruit::createComponent().bind<IWorker, Worker>();
+};
