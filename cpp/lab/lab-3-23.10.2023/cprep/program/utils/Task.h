@@ -1,8 +1,8 @@
 #include <string>
-#include "Option.h"
+#include "Options.h"
 
 struct Task {
     int lineNumber;
-    std::string* lineText;
-    Options* userOptions;
+    std::string *lineText;
+    Options *userOptions;
 };

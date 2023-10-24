@@ -23,8 +23,6 @@ private:
     std::unique_ptr<IQueue<Task>> taskQueue;
     std::unique_ptr<IQueue<Result>> resultQueue;
 
-    void readPatternsFromFile(Options *opts);
-
     void distributeTasks(Options *userOptions);
 
     std::vector<Result> gatherResultsFromAllWorkers();

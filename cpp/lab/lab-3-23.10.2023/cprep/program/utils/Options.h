@@ -2,10 +2,10 @@
 #include "thread"
 
 struct Options {
+public:
     bool ignoreCase = false;   // -i
     bool invertMatch = false;  // -v
     std::vector<std::string> patterns;  // -e (multiple allowed)
-    std::string patternFile;   // -f
     int afterContext = 0;      // -A
     int beforeContext = 0;     // -B
     int context = 0;           // -C

@@ -6,13 +6,16 @@
 #define CPREP_IOPTIONPARSER_H
 
 
-#include "../utils/Option.h"
+#include "../utils/Options.h"
+#include "CLI11.hpp"
+#include "fruit/component.h"
 
 class IOptionParser {
 
 public:
-    virtual Options *parse(int i, char **args) = 0;
+    virtual std::unique_ptr<Options> parse(CLI::App &app) = 0;
 };
 
+fruit::Component<IOptionParser> getIOptionParserComponent();
 
 #endif //CPREP_IOPTIONPARSER_H

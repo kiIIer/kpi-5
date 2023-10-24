@@ -11,13 +11,9 @@ Program::Program(IOptionParser *optionParser, IWorker *worker, IResultExporter *
           resultQueue(queueFactory->createResult()) {}
 
 int Program::run(int argc, char **argv) {
+    CLI::App app("Cpp Parallel Global Regular Expression Print");
     // Parse options
-    Options *userOptions = optionParser->parse(argc, argv);
-
-    // Check and read patterns from a file if provided
-    if (!userOptions->patternFile.empty()) {
-        readPatternsFromFile(userOptions);
-    }
+    std::unique_ptr<Options> userOptions = optionParser->parse(app);
 
     // Start worker threads
     std::vector<std::thread> workerThreads;
@@ -28,7 +24,7 @@ int Program::run(int argc, char **argv) {
     }
 
     // Send tasks
-    distributeTasks(userOptions);
+    distributeTasks(userOptions.get());
 
     for (auto &t: workerThreads) {
         t.join();
@@ -37,7 +33,6 @@ int Program::run(int argc, char **argv) {
     std::vector<Result> results = gatherResultsFromAllWorkers();
     exporter->exportResults(results);
 
-    delete userOptions;
     for (auto res: results) {
         delete res.matchedText;
     }
@@ -67,14 +62,6 @@ void Program::distributeTasks(Options *userOptions) {
 
     if (userOptions->inputFile) {
         fileStream.close();
-    }
-}
-
-void Program::readPatternsFromFile(Options *opts) {
-    std::ifstream file(opts->patternFile);
-    std::string line;
-    while (std::getline(file, line)) {
-        opts->patterns.push_back(line);
     }
 }
 
