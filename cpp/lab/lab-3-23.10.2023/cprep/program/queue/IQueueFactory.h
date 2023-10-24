@@ -5,9 +5,13 @@
 #ifndef CPREP_IQUEUEFACTORY_H
 #define CPREP_IQUEUEFACTORY_H
 
+#include <memory>
+#include "IQueue.h"
 
+template<typename T>
 class IQueueFactory {
-
+public:
+    virtual std::unique_ptr<IQueue<T>> create() = 0;
 };
 
 
