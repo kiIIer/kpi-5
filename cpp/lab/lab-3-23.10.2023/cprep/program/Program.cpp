@@ -12,7 +12,6 @@ Program::Program(IOptionParser *optionParser, IWorker *worker, IResultExporter *
 
 int Program::run(int argc, char **argv) {
     CLI::App app("Cpp Parallel Global Regular Expression Print");
-    // Parse options
     std::unique_ptr<UserOptions> userOptions = optionParser->parse(app);
 
 
@@ -40,14 +39,22 @@ int Program::run(int argc, char **argv) {
 
         std::cerr << "Gathering results" << std::endl;
         resultQueue->shouldTerminate();
-        std::vector<RegexResult> results = gatherResultsFromAllWorkers();
+        if (!userOptions->unorderedOut) {
+            std::vector<RegexResult> results = gatherResultsFromAllWorkers();
 
-        std::cerr << "Exporting" << std::endl;
-        exporter->exportResults(results, userOptions.get());
+            std::cerr << "Exporting" << std::endl;
+            exporter->exportResults(results, userOptions.get());
 
-        std::cerr << "Deleting results" << std::endl;
-        for (auto res: results) {
-            delete res.matchedText;
+            std::cerr << "Deleting results" << std::endl;
+            for (auto res: results) {
+                delete res.matchedText;
+            }
+        } else {
+            RegexResult res;
+            while (resultQueue->pop(res)) {
+                std::cout << res.matchedText << std::endl;
+                delete res.matchedText;
+            }
         }
 
         std::cerr << "Exiting callback" << std::endl << std::flush;
@@ -79,7 +86,6 @@ void Program::distributeTasks(UserOptions *userOptions) {
         taskQueue->push(task);
     }
 
-    // Signal workers there's no more work
     taskQueue->shouldTerminate();
 //    RegexTask terminationTask = {-1, nullptr, nullptr};
 //    for (int i = 0; i < userOptions->threads; ++i) {

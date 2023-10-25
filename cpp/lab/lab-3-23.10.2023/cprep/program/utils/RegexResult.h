@@ -5,7 +5,7 @@
 
 struct RegexResult {
     int lineNumber;
-    std::string *matchedText; // Will use heap pointers directly
+    std::string *matchedText;
 };
 
 #endif // RESULT_H
