@@ -12,7 +12,7 @@ class ResultExporter : public IResultExporter {
 public:
     INJECT(ResultExporter());
 
-    void exportResults(std::vector<Result> results, Options *options) override;
+    void exportResults(std::vector<RegexResult> results, UserOptions *options) override;
 };
 
 

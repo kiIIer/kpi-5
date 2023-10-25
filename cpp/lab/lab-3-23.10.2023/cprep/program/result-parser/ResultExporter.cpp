@@ -6,13 +6,13 @@
 #include "ResultExporter.h"
 #include "sstream"
 
-void ResultExporter::exportResults(std::vector<Result> results, Options *options) {
+void ResultExporter::exportResults(std::vector<RegexResult> results, UserOptions *options) {
     // Sort the results based on lineNumber
-    std::sort(results.begin(), results.end(), [](const Result &a, const Result &b) {
+    std::sort(results.begin(), results.end(), [](const RegexResult &a, const RegexResult &b) {
         return a.lineNumber < b.lineNumber;
     });
 
-    for (const Result &result: results) {
+    for (const RegexResult &result: results) {
         if (options->showLineNumber) {
             std::cout << result.lineNumber << ":";
         }

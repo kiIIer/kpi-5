@@ -20,12 +20,13 @@ public:
 
     void shouldTerminate() override;
 
+    virtual ~Queue() = default;
+
 private:
     mutable std::mutex mtx;
     std::condition_variable cv;
     std::queue<T> data;
     bool terminate = false;
-};
 };
 
 

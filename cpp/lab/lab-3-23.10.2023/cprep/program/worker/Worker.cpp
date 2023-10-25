@@ -4,7 +4,7 @@
 
 #include "Worker.h"
 
-void Worker::work(IQueue<Task> *taskQueue, IQueue<Result> *resultQueue, Options *options) {
+void Worker::work(IQueue<RegexTask> *taskQueue, IQueue<RegexResult> *resultQueue, UserOptions *options) {
     // Compile all the patterns once to reuse
     std::vector<std::regex> compiledPatterns;
     for (const auto &pattern: options->patterns) {
@@ -16,9 +16,9 @@ void Worker::work(IQueue<Task> *taskQueue, IQueue<Result> *resultQueue, Options 
     }
 
     while (true) {
-        Task task;
+        RegexTask task;
         if (!taskQueue->pop(task)) {
-            continue;
+            return;
         }
 
         // Terminate if lineNumber is -1
@@ -29,7 +29,7 @@ void Worker::work(IQueue<Task> *taskQueue, IQueue<Result> *resultQueue, Options 
         bool isMatch = matchesPattern(*task.lineText, compiledPatterns);
 
         if (isMatch ^ options->invertMatch) {
-            Result result;
+            RegexResult result;
             result.lineNumber = task.lineNumber;
             result.matchedText = task.lineText;
             resultQueue->push(result);

@@ -4,8 +4,8 @@
 
 #include "OptionParser.h"
 
-std::unique_ptr<Options> OptionParser::parse(CLI::App &app) {
-    std::unique_ptr<Options> options = std::make_unique<Options>();
+std::unique_ptr<UserOptions> OptionParser::parse(CLI::App &app) {
+    std::unique_ptr<UserOptions> options = std::make_unique<UserOptions>();
 
     app.add_flag("-i,--ignore-case", options->ignoreCase, "Perform a case insensitive search.");
 
@@ -24,6 +24,10 @@ std::unique_ptr<Options> OptionParser::parse(CLI::App &app) {
 
     // Number of threads
     app.add_option("--threads", options->threads, "Number of worker threads.");
+
+    app.add_option("-l,--log", options->log_file, "Log file path (default: /dev/null)");
+
+    return options;
 }
 
 OptionParser::OptionParser() {

@@ -13,9 +13,9 @@ class QueueFactory : public IQueueFactory {
 public:
     INJECT (QueueFactory());
 
-    std::unique_ptr<IQueue<Task>> createTask() override;
+    std::unique_ptr<IQueue<RegexTask>> createTask() override;
 
-    std::unique_ptr<IQueue<Result>> createResult() override;
+    std::unique_ptr<IQueue<RegexResult>> createResult() override;
 };
 
 

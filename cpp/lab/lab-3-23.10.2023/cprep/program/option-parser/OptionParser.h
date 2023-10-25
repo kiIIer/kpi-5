@@ -12,7 +12,7 @@ class OptionParser : public IOptionParser {
 public:
     INJECT(OptionParser());
 
-    std::unique_ptr<Options> parse(CLI::App &app) override;
+    std::unique_ptr<UserOptions> parse(CLI::App &app) override;
 };
 
 

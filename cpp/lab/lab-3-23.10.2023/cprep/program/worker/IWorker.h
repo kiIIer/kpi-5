@@ -7,14 +7,14 @@
 
 
 #include "../queue/IQueue.h"
-#include "../utils/Task.h"
-#include "../utils/Result.h"
+#include "../utils/RegexTask.h"
+#include "../utils/RegexResult.h"
 #include "fruit/component.h"
 
 class IWorker {
 
 public:
-    virtual void work(IQueue<Task> *taskQueue, IQueue<Result> *resultQueue, Options *options) = 0;
+    virtual void work(IQueue<RegexTask> *taskQueue, IQueue<RegexResult> *resultQueue, UserOptions *options) = 0;
 };
 
 fruit::Component<IWorker> getIWorkerComponent();

@@ -9,14 +9,13 @@
 template<typename T>
 class IQueue {
 public:
-    // Push an item onto the queue
-    virtual void push(const T& item) = 0;
+    virtual void push(const T &item) = 0;
 
-    // Try to pop an item from the queue. Returns false if the queue is empty.
-    virtual bool pop(T& item) = 0;
+    virtual bool pop(T &item) = 0;
 
-    // Check if the queue is empty
-    virtual void shouldTerminate() const = 0;
+    virtual void shouldTerminate() = 0;
+
+    virtual ~IQueue() = default;
 };
 
 

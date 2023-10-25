@@ -11,7 +11,7 @@
 
 class Worker : public IWorker {
 public:
-    virtual void work(IQueue<Task> *taskQueue, IQueue<Result> *resultQueue, Options *options) override;
+    virtual void work(IQueue<RegexTask> *taskQueue, IQueue<RegexResult> *resultQueue, UserOptions *options) override;
 
     INJECT(Worker());
 

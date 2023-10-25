@@ -7,14 +7,14 @@
 
 
 #include <vector>
-#include "../utils/Result.h"
-#include "../utils/Options.h"
+#include "../utils/RegexResult.h"
+#include "../utils/UserOptions.h"
 #include "fruit/fruit.h"
 
 class IResultExporter {
 
 public:
-    virtual void exportResults(std::vector<Result> results, Options *options) = 0;
+    virtual void exportResults(std::vector<RegexResult> results, UserOptions *options) = 0;
 };
 
 fruit::Component<IResultExporter> getIResultExporterComponent();
