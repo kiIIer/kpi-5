@@ -20,7 +20,7 @@ Hello World
 
 Я купив собі плату, та записав відео, яке можна переглянути тут.
 
-<iframe src="https://drive.google.com/file/d/1LHgjKqtTQBRgGdIdV1PBQTgG6Y9pYsPv/preview" width="640" height="480"></iframe>
+<https://youtube.com/shorts/2A-T7ySar6A?feature=share>
 
 Як видно, пісня натискання кнопки Reset, схема починає рахувати.
 
