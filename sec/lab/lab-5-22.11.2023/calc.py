@@ -6,4 +6,4 @@ def power_modder(x, a, mod):
     print(f'{x} ^ {a} mod {mod} = {result}')
     return result
 
-power_modder(4, 34, 53)
+power_modder(32, 34, 53)
