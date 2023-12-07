@@ -276,6 +276,7 @@ cython_debug/
 .metadata/
 
 #Debug
+**/Drivers/
 Debug/
 debug/
 Release/
