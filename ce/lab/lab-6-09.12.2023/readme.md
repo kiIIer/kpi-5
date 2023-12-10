@@ -16,7 +16,7 @@ Communication interfaces (I2C)
 
 Оригінал можна переглянути тут: <https://www.youtube.com/watch?v=nuEOA9GbK6U>
 
-Роботи схеми можна переглянути тут: <https://youtube.com/shorts/fE_FZqp9U1E>
+Роботи схеми можна переглянути тут: <https://youtube.com/shorts/IghmLYt4M34>
 
 ### Логічний аналізатор
 
